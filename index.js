@@ -10,7 +10,7 @@ const TRIGGERS = {
 
 // Rate limiting: last GIF time per channel
 const lastGifTime = new Map();
-const RATE_LIMIT_MS = 30000; // 30 seconds
+const RATE_LIMIT_MS = 120000; // 120 seconds
 
 // Search Giphy for GIFs
 async function searchGifs(query, limit = 5) {
