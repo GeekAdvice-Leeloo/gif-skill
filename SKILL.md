@@ -1,8 +1,6 @@
 ---
 name: gif
 description: Search and send GIFs using Giphy API
-tools:
-  - gif_search
 ---
 
 # GIF Skill
@@ -13,24 +11,25 @@ Search and send GIFs using Giphy API.
 
 Get a Giphy API key from https://developers.giphy.com/dashboard
 
-Set the API key:
-- Environment variable: `GIPHY_API_KEY`
+Set the environment variable `GIPHY_API_KEY` in your Docker `.env` file.
 
-## Usage
+## How to Search GIFs
 
-### Tool: gif_search
-Search for GIFs by query.
+When a user asks for a GIF, use exec to call the Giphy API:
 
-**Parameters:**
-- `query` (string): What to search for (required)
-- `limit` (number, optional): Max results (default: 5)
-
-**Returns:** Array of GIF objects with url, title
-
-## Example
-
+```bash
+curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=SEARCH_TERM&limit=5&rating=pg-13"
 ```
-User: find a funny cat gif
-Tool: gif_search({query: "funny cat"})
-→ Returns GIF URLs
+
+Then extract the `url` from the first result in the `images.fixed_height` object.
+
+## Examples
+
+Search for "funny cat":
+```bash
+curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=funny+cat&limit=5&rating=pg-13"
 ```
+
+## Sending GIFs
+
+Once you have a GIF URL, use the message tool to send it to the channel.
