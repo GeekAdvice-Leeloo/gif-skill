@@ -25,7 +25,7 @@ Send GIFs automatically when someone celebrates or reacts positively:
 Use curl with the Giphy API:
 
 ```bash
-curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=SEARCH_TERM&limit=5&rating=pg-13"
+curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=SEARCH_TERM&limit=5&rating=pg-13`
 ```
 
 Parse the JSON response to get `data[].images.fixed_height.url`.
