@@ -35,7 +35,7 @@ The skill watches for celebration moments and sends appropriate GIFs:
 - On each message, check for trigger phrases
 - If match found, search Giphy for related GIF
 - Send the GIF to the channel
-- Rate limited: max 1 GIF per 30 seconds per channel
+- Rate limited: max 1 GIF per 120 seconds per channel
 
 ## Example
 
