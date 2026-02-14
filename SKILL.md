@@ -1,35 +1,41 @@
 ---
 name: gif
 description: Search and send GIFs using Giphy API
+metadata: {"openclaw": {"requires": {"env": ["GIPHY_API_KEY"]}, "primaryEnv": "GIPHY_API_KEY"}}
 ---
 
 # GIF Skill
 
 Search and send GIFs using Giphy API.
 
-## Setup
+## When to Send GIFs
 
-Get a Giphy API key from https://developers.giphy.com/dashboard
+Send GIFs automatically when someone celebrates or reacts positively:
 
-Set the environment variable `GIPHY_API_KEY` in your Docker `.env` file.
+**Trigger phrases:**
+- "nice", "well done", "gg", "good game", "congrats", "congratulations", "wp", "pog", "poggers"
+- "lol", "lmao", "haha", "laugh", "rofl"
+- "happy", "excited", "woohoo", "yay", "awesome", "amazing"
+- "rip", "oof", "owned" (for burns)
+
+**Rate limit:** Maximum 1 GIF per 2 minutes per channel.
 
 ## How to Search GIFs
 
-When a user asks for a GIF, use exec to call the Giphy API:
+Use curl with the Giphy API:
 
 ```bash
 curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=SEARCH_TERM&limit=5&rating=pg-13"
 ```
 
-Then extract the `url` from the first result in the `images.fixed_height` object.
+Parse the JSON response to get `data[].images.fixed_height.url`.
 
-## Examples
+## Example Searches
 
-Search for "funny cat":
-```bash
-curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=funny+cat&limit=5&rating=pg-13"
-```
+- Celebration: `curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=celebration+happy&limit=5&rating=pg-13"`
+- Funny/Laugh: `curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=funny+laugh&limit=5&rating=pg-13"`
+- Burn/Fail: `curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=oops+fail&limit=5&rating=pg-13"`
 
-## Sending GIFs
+## Sending
 
 Once you have a GIF URL, use the message tool to send it to the channel.
