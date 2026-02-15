@@ -31,4 +31,7 @@ Parse JSON response - get `data[].images.fixed_height.url`.
 
 ## Sending
 
-Use message tool to send the GIF URL to the channel.
+Use the message tool to send the GIF URL to the channel:
+```
+message send --channel discord --message "GIF_URL"
+```
