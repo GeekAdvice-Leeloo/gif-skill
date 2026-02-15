@@ -10,7 +10,9 @@ Search and send GIFs using Giphy API, and respond to GIFs with matching reaction
 ## When to Send GIFs
 
 ### 1. React to GIFs
-When someone posts a GIF in the channel, respond with a matching GIF. Detect GIFs by looking for Discord embeds from giphy.com or tenor.com.
+When someone posts a GIF in the channel, respond with a matching GIF that fits the vibe. Look at what they posted - if it's funny, send a funny GIF back. If it's cool/ dramatic, match that energy. This is a great way to react without using words.
+
+Detect GIFs by looking for Discord embeds from giphy.com or tenor.com.
 
 ### 2. Celebrate
 Send GIFs when someone uses celebration words:
