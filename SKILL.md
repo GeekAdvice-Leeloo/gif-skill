@@ -1,6 +1,7 @@
 ---
 name: gif
 description: Search and send GIFs using Giphy API
+metadata: {"openclaw": {"requires": {"env": ["GIPHY_API_KEY"]}}}
 ---
 
 # GIF Skill
@@ -23,7 +24,7 @@ Send GIFs when someone uses celebration words:
 
 ## How to Search GIFs
 
-Use curl with the Giphy API. The API key comes from skill config (apiKey) or env var GIPHY_API_KEY:
+Use curl with the Giphy API:
 
 ```bash
 curl -s "https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_API_KEY&q=SEARCH_TERM&limit=5&rating=pg-13"
